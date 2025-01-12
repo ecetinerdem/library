@@ -43,6 +43,11 @@ const BookOverview = ({
           <p className="font-bebas-neue text-xl text-dark-100">Borrow</p>
         </Button>
       </div>
+      <div className="relative flex flex-1 justify-center">
+        <div className="relative">
+          <BookCover />
+        </div>
+      </div>
     </section>
   );
 };
