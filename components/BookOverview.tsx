@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 const BookOverview = ({
@@ -20,9 +21,22 @@ const BookOverview = ({
             By <span>{author}</span>
           </p>
           <p className="font-semibold text-light-200">
-            Category <span>{author}</span>
+            Category: <span>{genre}</span>
+          </p>
+          <div className="flex flex-grow gap-1">
+            <Image src="/icons/star.svg" alt="star" width={22} height={22} />
+            <p>{rating}</p>
+          </div>
+        </div>
+        <div className="book-copies">
+          <p>
+            Total Books: <span>{total_copies}</span>
+          </p>
+          <p>
+            Available Books: <span>{available_copies}</span>
           </p>
         </div>
+        <p className="book-description">{description}</p>
       </div>
     </section>
   );
