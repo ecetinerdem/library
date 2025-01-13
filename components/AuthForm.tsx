@@ -24,6 +24,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
+import { FIELD_NAMES } from "@/app/constant";
 
 interface Props<T extends FieldValues> {
   schema: ZodType<T>;
@@ -66,11 +67,14 @@ const AuthForm = <T extends FieldValues>({
         >
           {Object.keys(defaultValues).map((field) => (
             <FormField
+              key={field}
               control={form.control}
-              name="username"
+              name={field as Path<T>}
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Username</FormLabel>
+                  <FormLabel className="capitalize">
+                    {FIELD_NAMES[field.name as keyof typeof FIELD_NAMES]}
+                  </FormLabel>
                   <FormControl>
                     <Input placeholder="shadcn" {...field} />
                   </FormControl>
