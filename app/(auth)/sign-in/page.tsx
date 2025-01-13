@@ -11,6 +11,7 @@ const page = () => {
         email: "",
         password: "",
       }}
+      onSubmit={() => {}}
     />
   );
 };
