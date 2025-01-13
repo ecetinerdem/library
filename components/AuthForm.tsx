@@ -24,7 +24,8 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
-import { FIELD_NAMES } from "@/app/constant";
+import { FIELD_NAMES, FIELD_TYPES } from "@/app/constant";
+import ImageUploader from "./ImageUploader";
 
 interface Props<T extends FieldValues> {
   schema: ZodType<T>;
@@ -76,18 +77,29 @@ const AuthForm = <T extends FieldValues>({
                     {FIELD_NAMES[field.name as keyof typeof FIELD_NAMES]}
                   </FormLabel>
                   <FormControl>
-                    <Input placeholder="shadcn" {...field} />
+                    {field.name === "universityCard" ? (
+                      <ImageUploader />
+                    ) : (
+                      <Input
+                        required
+                        type={
+                          FIELD_TYPES[field.name as keyof typeof FIELD_TYPES]
+                        }
+                        {...field}
+                        className="form-input"
+                      />
+                    )}
                   </FormControl>
-                  <FormDescription>
-                    This is your public display name.
-                  </FormDescription>
+
                   <FormMessage />
                 </FormItem>
               )}
             />
           ))}
 
-          <Button type="submit">Submit</Button>
+          <Button type="submit" className="form-btn">
+            {isSignIn ? "Sign in" : "Sign up"}
+          </Button>
         </form>
       </Form>
       <p className="text-center text-base font-medium">
