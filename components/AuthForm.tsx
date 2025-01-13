@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import {
   DefaultValues,
   FieldValues,
+  Path,
   SubmitHandler,
   useForm,
   UseFormReturn,
