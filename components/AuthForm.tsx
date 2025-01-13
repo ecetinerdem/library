@@ -1,6 +1,8 @@
 import React from "react";
 
-const AuthForm = () => {
+interface Props {}
+
+const AuthForm = ({ type, schema, defaultValues, onSubmit }: Props) => {
   return <div>AuthForm</div>;
 };
 
