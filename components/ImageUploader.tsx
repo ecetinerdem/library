@@ -49,7 +49,14 @@ const ImageUploader = () => {
         onSuccess={onSuccess}
         fileName="test-upload.png"
       />
-      <button className="upload-btn">
+      <button
+        className="upload-btn"
+        onClick={(e) => {
+          e.preventDefault();
+          //@ts-ignore
+          ikUploadRef.current?.click();
+        }}
+      >
         <Image
           src="/icons/upload.svg"
           alt="upload-icon"
