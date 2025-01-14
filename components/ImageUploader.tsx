@@ -2,6 +2,7 @@
 
 import React from "react";
 import { IKImage, ImageKitProvider, IKUpload } from "imagekitio-next";
+import config from "@/lib/config";
 
 const authenticator = async () => {
   try {
