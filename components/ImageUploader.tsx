@@ -1,8 +1,15 @@
 "use client";
 
-import React from "react";
+import React, { useRef, useState } from "react";
 import { IKImage, ImageKitProvider, IKUpload } from "imagekitio-next";
 import config from "@/lib/config";
+import ImageKit from "imagekit";
+
+const {
+  env: {
+    imagekit: { publicKey, urlEndpoint },
+  },
+} = config;
 
 const authenticator = async () => {
   try {
@@ -22,7 +29,17 @@ const authenticator = async () => {
 };
 
 const ImageUploader = () => {
-  return <div>ImageUploader</div>;
+  const ikUploadRef = useRef(null);
+  const [file, setFile] = useState<{ filePath: string } | null>(null);
+  return (
+    <ImageKitProvider
+      publicKey={publicKey}
+      urlEndpoint={urlEndpoint}
+      authenticator={authenticator}
+    >
+      <IKUpload />
+    </ImageKitProvider>
+  );
 };
 
 export default ImageUploader;
