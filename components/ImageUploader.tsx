@@ -29,12 +29,21 @@ const authenticator = async () => {
   }
 };
 
-const ImageUploader = () => {
+const ImageUploader = ({
+  onFilechange,
+}: {
+  onFilechange: (filePath: string) => void;
+}) => {
   const ikUploadRef = useRef(null);
   const [file, setFile] = useState<{ filePath: string } | null>(null);
 
-  const onError = () => {};
-  const onSuccess = () => {};
+  const onError = (error: any) => {
+    console.log(error);
+  };
+  const onSuccess = (res: any) => {
+    setFile(res);
+    onFilechange(res.filePath);
+  };
 
   return (
     <ImageKitProvider
