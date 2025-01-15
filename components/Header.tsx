@@ -1,4 +1,6 @@
 "use client";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
@@ -30,7 +32,12 @@ const Header = () => {
           </Link>
         </li>
         <li>
-          <Link href="/my-profile">My Profile</Link>
+          <Link href="/my-profile">
+            <Avatar>
+              <AvatarImage src="https://github.com/shadcn.png" />
+              <AvatarFallback>CN</AvatarFallback>
+            </Avatar>
+          </Link>
         </li>
       </ul>
     </header>
