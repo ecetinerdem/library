@@ -10,7 +10,7 @@ export const BORROW_STATUS_ENUM = pgEnum("borrow_status", ["BORROWED", "RETURNED
 
 export const users = pgTable("users", {
     id: uuid("id").notNull().primaryKey().defaultRandom().unique(),
-    fullname: varchar("full_name", { length: 255 }).notNull(),
+    fullName: varchar("full_name", { length: 255 }).notNull(),
     email: text("email").notNull().unique(),
     universityId: integer("university_id").notNull().unique(),
     password: varchar("password").notNull(),
