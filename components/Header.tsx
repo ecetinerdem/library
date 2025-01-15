@@ -36,7 +36,9 @@ const Header = ({ session }: { session: Session }) => {
           <Link href="/my-profile">
             <Avatar>
               <AvatarImage src="https://github.com/shadcn.png" />
-              <AvatarFallback>{session?.user?.name}</AvatarFallback>
+              <AvatarFallback className="text-white">
+                {session?.user?.name}
+              </AvatarFallback>
             </Avatar>
           </Link>
         </li>
