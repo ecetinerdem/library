@@ -1,7 +1,7 @@
 "use client";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
-import { cn } from "@/lib/utils";
+import { cn, getInitials } from "@/lib/utils";
 import { Session } from "next-auth";
 import Image from "next/image";
 import Link from "next/link";
@@ -36,8 +36,8 @@ const Header = ({ session }: { session: Session }) => {
           <Link href="/my-profile">
             <Avatar>
               <AvatarImage src="https://github.com/shadcn.png" />
-              <AvatarFallback className="text-white">
-                {session?.user?.name}
+              <AvatarFallback className="bg-amber-100">
+                {getInitials(session?.user?.name || "IN")}
               </AvatarFallback>
             </Avatar>
           </Link>
