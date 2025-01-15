@@ -5,7 +5,7 @@ import { users } from "./database/schema"
 import { eq } from "drizzle-orm"
 import { compare } from "bcryptjs"
  
-export default NextAuth({
+export const { handlers, signIn, signOut, auth } = NextAuth({
     session: {
         strategy: 'jwt',
     },
