@@ -4,7 +4,26 @@ import { db } from "@/database/drizzle";
 import { users } from "@/database/schema";
 import { eq } from "drizzle-orm";
 import { hash } from "bcryptjs";
+import { signIn } from "@/auth";
 
+
+const signInWithCredentials = async (params: Pick<AuthCredentials, "email" | "password">) => {
+    const {email, password} = params;
+
+    try {
+        const result = await signIn("credentials", {
+            email,
+            password,
+            redirect: false,
+        });
+
+        if(result?.error) {
+            return {success: false, message: "Signin error"};
+        }
+    } catch (error) {
+        return {success: false, message: "Signin error"}
+    }
+}
 const signUp = async (params: AuthCredentials) => {
     const { fullName, email, password, universityId, universityCard } = params;
 
@@ -27,6 +46,9 @@ const signUp = async (params: AuthCredentials) => {
                 universityId,
                 universityCard
             })
+
+            await signInWithCredentials({email, password});
+            return{ success: true, message: "Signup successful" };
 
         } catch (error) {
             console.log(error, "Signup error");
