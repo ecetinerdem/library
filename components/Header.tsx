@@ -29,6 +29,9 @@ const Header = () => {
             Library
           </Link>
         </li>
+        <li>
+          <Link href="/my-profile">My Profile</Link>
+        </li>
       </ul>
     </header>
   );
